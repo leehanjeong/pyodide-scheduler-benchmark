@@ -111,7 +111,6 @@ scheduler-benchmark/
 ├── origin_scheduler.ts       # Original Pyodide scheduler (for reference)
 ├── test_bench.ts            # Benchmark suite (4 scenarios)
 ├── environments.ts          # Runtime detection utility
-├── bench.ts                 # Benchmark helpers
 │
 ├── test_bench.html          # Browser test page
 │
