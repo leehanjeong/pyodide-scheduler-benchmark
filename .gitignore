@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs (TypeScript compiled files)
+dist/
+*.js
+*.js.map
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary files
+*.tmp
+.cache/
+
+# Internal test files
+test_nested_avoidance.html
+test_nested_avoidance.ts
+debug.html
+
+# Experimental/old files (not part of PoC)
+scheduler.ts
+bench.ts
+test_nested_avoidance.html
+test_nested_avoidance.ts
+test_safari_simulation.ts
+debug.html

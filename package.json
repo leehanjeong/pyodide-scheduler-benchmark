@@ -1,0 +1,28 @@
+{
+  "name": "pyodide-scheduler-bench",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && npm run test:node",
+    "test:node": "node dist/test_bench.js",
+    "test:deno": "deno run --allow-all dist/test_bench.js",
+    "test:browser": "npm run build && npm run serve",
+    "test:browser:chrome": "npm run build && npm run serve:chrome",
+    "test:browser:firefox": "npm run build && npm run serve:firefox",
+    "test:safari-sim": "npm run build && node dist/test_safari_simulation.js",
+    "debug": "npm run build && npx http-server . -p 8080 -c-1 -o /debug.html",
+    "debug:firefox": "npm run build && firefox http://localhost:8080/debug.html & npx http-server . -p 8080 -c-1",
+    "serve": "npx http-server . -p 8080 -c-1 -o /test_bench.html",
+    "serve:chrome": "npx http-server . -p 8080 -c-1 -o /test_bench.html",
+    "serve:firefox": "firefox http://localhost:8080/test_bench.html & npx http-server . -p 8080 -c-1",
+    "serve:only": "npx http-server . -p 8080 -c-1",
+    "bench:node": "node dist/bench.js",
+    "bench:old": "npm run build && npm run bench:old"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "http-server": "^14.1.1"
+  }
+}
+

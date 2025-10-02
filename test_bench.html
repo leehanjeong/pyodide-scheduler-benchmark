@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scheduler Benchmark Test</title>
+  <style>
+    body {
+      font-family: 'Monaco', 'Courier New', monospace;
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 20px;
+      margin: 0;
+    }
+    h1 {
+      color: #4ec9b0;
+      border-bottom: 2px solid #4ec9b0;
+      padding-bottom: 10px;
+    }
+    #output {
+      background: #252526;
+      padding: 20px;
+      border-radius: 5px;
+      border: 1px solid #3e3e42;
+      white-space: pre-wrap;
+      font-size: 13px;
+      line-height: 1.5;
+      overflow-x: auto;
+    }
+    .status {
+      background: #264f78;
+      color: #ffffff;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      margin: 10px 0;
+    }
+    th, td {
+      border: 1px solid #3e3e42;
+      padding: 8px;
+      text-align: right;
+    }
+    th {
+      background: #264f78;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <h1>⚡ Scheduler Benchmark Test</h1>
+  <div class="status" id="status">Loading...</div>
+  <div id="output"></div>
+
+  <script type="module">
+    const outputEl = document.getElementById('output');
+    const statusEl = document.getElementById('status');
+    
+    // Capture console.log
+    const originalLog = console.log;
+    console.log = (...args) => {
+      originalLog(...args);
+      const text = args.map(arg => 
+        typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
+      ).join(' ');
+      outputEl.textContent += text + '\n';
+    };
+
+    // Capture console.error
+    const originalError = console.error;
+    console.error = (...args) => {
+      originalError(...args);
+      const text = '❌ ERROR: ' + args.map(arg => 
+        typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
+      ).join(' ');
+      outputEl.textContent += text + '\n';
+      statusEl.textContent = '❌ Error occurred during testing';
+      statusEl.style.background = '#5a1d1d';
+    };
+
+    statusEl.textContent = '🔄 Running benchmark tests...';
+    
+    // Import and run the benchmark
+    import('./dist/test_bench.js').then(() => {
+      statusEl.textContent = '✅ All tests completed!';
+      statusEl.style.background = '#1a5a1d';
+    }).catch(err => {
+      console.error('Failed to load benchmark:', err);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>scheduler bench</title>
+  </head>
+  <body>
+    <pre id="out"></pre>
+    <script type="module">
+      import "./dist/bench.js";
+
+      // bench.ts가 console.log로 표를 뿌리므로, 화면에도 찍어줄게요
+      const out = document.getElementById('out');
+      const orig = console.log;
+      console.log = (...args) => {
+        orig(...args);
+        out.textContent += args.join(' ') + '\n';
+      };
+    </script>
+  </body>
+</html>
+
