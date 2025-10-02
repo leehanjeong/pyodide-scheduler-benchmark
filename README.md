@@ -114,7 +114,6 @@ scheduler-benchmark/
 ├── bench.ts                 # Benchmark helpers
 │
 ├── test_bench.html          # Browser test page
-├── index.html               # Main page
 │
 ├── package.json             # Dependencies
 ├── tsconfig.json            # TypeScript configuration
