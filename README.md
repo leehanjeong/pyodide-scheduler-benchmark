@@ -1,6 +1,6 @@
 # Pyodide Scheduler Benchmark
 
-Comprehensive benchmark and proof-of-concept for Pyodide webloop scheduler optimizations.
+Comprehensive benchmark for Pyodide webloop scheduler optimizations.
 
 **Related Issue:** [Pyodide Issue #5925](https://github.com/pyodide/pyodide/issues/5925)
 
@@ -14,12 +14,28 @@ npm install
 # Build TypeScript
 npm run build
 
-# Open browser test (Chrome)
+# Open browser test
 npm run test:browser
 
 # Or manually
 npm run serve:only
 # Then open http://localhost:8080/test_bench.html
+```
+## Repository Structure
+
+```
+scheduler-benchmark/
+├── README.md                 # This file
+├── test_scheduler.ts         # Modified scheduler (with both optimizations)
+├── origin_scheduler.ts       # Original Pyodide scheduler (for reference)
+├── test_bench.ts            # Benchmark suite (4 scenarios)
+├── environments.ts          # Runtime detection utility
+│
+├── test_bench.html          # Browser test page
+│
+├── package.json             # Dependencies
+├── tsconfig.json            # TypeScript configuration
+└── .gitignore               # Excludes analysis documents
 ```
 
 ## Test Objectives
@@ -46,7 +62,7 @@ npm run serve:only
 
 ### 3. High-Frequency Scenario
 - Schedule 100 callbacks concurrently
-- Simulates Pygame-like environment with many `sleep(0)` calls per frame
+- Simulates environment with many `sleep(0)` calls per frame
 - Measures MessageChannel bulk scheduling performance
 
 ### 4. Game Loop Scenario  
@@ -56,7 +72,7 @@ npm run serve:only
 
 ## How to Run Tests
 
-### Browser (Recommended)
+### Browser 
 
 **Chrome:**
 ```bash
@@ -68,11 +84,12 @@ npm run test:browser
 npm run test:browser:firefox
 ```
 
-**Safari (macOS only):**
+**Safari:**
 ```bash
 npm run serve:only
 # Then open http://localhost:8080/test_bench.html in Safari
 ```
+**Note:** Safari has known MessageChannel issues, uses postMessage/setTimeout fallback.
 
 **Manual:**
 ```bash
@@ -102,22 +119,7 @@ deno run --allow-all dist/test_bench.js
 
 
 
-## Repository Structure
 
-```
-scheduler-benchmark/
-├── README.md                 # This file
-├── test_scheduler.ts         # Modified scheduler (with both optimizations)
-├── origin_scheduler.ts       # Original Pyodide scheduler (for reference)
-├── test_bench.ts            # Benchmark suite (4 scenarios)
-├── environments.ts          # Runtime detection utility
-│
-├── test_bench.html          # Browser test page
-│
-├── package.json             # Dependencies
-├── tsconfig.json            # TypeScript configuration
-└── .gitignore               # Excludes analysis documents
-```
 
 
 ## References

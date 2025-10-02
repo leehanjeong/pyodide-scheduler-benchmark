@@ -26,11 +26,6 @@ npm-debug.log*
 *.tmp
 .cache/
 
-# Internal test files
-test_nested_avoidance.html
-test_nested_avoidance.ts
-debug.html
-
 # Experimental/old files (not part of PoC)
 scheduler.ts
 bench.ts
