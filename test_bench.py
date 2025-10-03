@@ -10,6 +10,7 @@ Method - Direct execution:
 
 import asyncio
 import sys
+import time
 
 # Test parameters
 SLEEP_VALUES = [0, 0.001, 0.002, 0.016] 
@@ -18,12 +19,7 @@ BURST_SIZE = 100
 
 def now():
     """Get current time in milliseconds"""
-    try:
-        from js import performance
-        return performance.now()
-    except ImportError:
-        import time
-        return time.time() * 1000
+    return time.perf_counter() * 1000
 
 
 async def measure_basic_once(sleep_sec):
