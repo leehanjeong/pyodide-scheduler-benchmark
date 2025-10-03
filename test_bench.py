@@ -13,7 +13,7 @@ import sys
 import time
 
 # Test parameters
-SLEEP_VALUES = [0, 0.001, 0.002, 0.016] 
+SLEEP_VALUES = [0, 0.001, 0.002, 0.003, 0.016] 
 ITERATIONS = 100
 BURST_SIZE = 100
 
