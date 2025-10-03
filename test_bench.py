@@ -3,7 +3,7 @@ USAGE IN PYODIDE CONSOLE:
 --------------------------
 Method - Direct execution:
     from pyodide.http import pyfetch
-    response = await pyfetch('https://raw.githubusercontent.com/leehanjeong/scheduler_benchmark/test_bench.py')
+    response = await pyfetch('https://raw.githubusercontent.com/leehanjeong/pyodide-scheduler-benchmark/main/test_bench.py')
     code = await response.string()
     exec(code)
 """
