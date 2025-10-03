@@ -192,7 +192,17 @@ async def main():
     print_summary_table(all_results)
     
 
-
-# Entry point
 if __name__ == "__main__":
-    asyncio.run(main())
+    try:
+    # Try to detect if we're in Pyodide (event loop already running)
+        import sys
+        if 'pyodide' in sys.modules:
+            import asyncio
+            loop = asyncio.get_event_loop()
+            loop.create_task(main())
+        else:
+            asyncio.run(main())
+    except RuntimeError:
+        # Fallback: just run with existing event loop
+        import asyncio
+        asyncio.create_task(main())
