@@ -192,7 +192,14 @@ async def main():
     print_summary_table(all_results)
     
 
-
-# Entry point
 if __name__ == "__main__":
-    asyncio.run(main())
+    try:
+        from pyodide.ffi import can_run_sync
+        # JSPI available (e.g., Chrome)
+        if can_run_sync():
+            asyncio.run(main())      
+        else:
+            # No JSPI (e.g., Safari/Firefox): event loop is already running
+            asyncio.get_running_loop().create_task(main())
+    except Exception:
+        asyncio.run(main())
