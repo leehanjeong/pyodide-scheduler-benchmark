@@ -37,21 +37,21 @@ async def measure_basic_once(sleep_sec):
     return now() - start
 
 
-async def measure_high_frequency(sleep_sec):
-    """
-    Scenario 2: High-frequency concurrent calls
-    Like pygame with many sprite updates at once
+# async def measure_high_frequency(sleep_sec):
+#     """
+#     Scenario 2: High-frequency concurrent calls
+#     Like pygame with many sprite updates at once
     
-    Schedules 100 asyncio.sleep() calls simultaneously
-    """
-    # await asyncio.sleep(0)
+#     Schedules 100 asyncio.sleep() calls simultaneously
+#     """
+#     # await asyncio.sleep(0)
     
-    start = now()
-    await asyncio.gather(*[
-        asyncio.sleep(sleep_sec)
-        for _ in range(BURST_SIZE)
-    ])
-    return now() - start
+#     start = now()
+#     await asyncio.gather(*[
+#         asyncio.sleep(sleep_sec)
+#         for _ in range(BURST_SIZE)
+#     ])
+#     return now() - start
 
 
 async def measure_game_loop(sleep_sec):
