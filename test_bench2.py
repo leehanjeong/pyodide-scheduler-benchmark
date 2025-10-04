@@ -166,17 +166,17 @@ async def main():
     
     await asyncio.sleep(0.1)
     
-    # Scenario 2: High-frequency (fewer iterations)
-    print("\n🔹 Running Scenario 2...")
-    hf_iters = max(20, ITERATIONS // 10)
-    hf_results = await run_scenario(
-        f"2. High-freq ({BURST_SIZE}x)",
-        measure_high_frequency,
-        hf_iters
-    )
-    all_results[f"2. High-freq ({BURST_SIZE}x)"] = hf_results
+    # # Scenario 2: High-frequency (fewer iterations)
+    # print("\n🔹 Running Scenario 2...")
+    # hf_iters = max(20, ITERATIONS // 10)
+    # hf_results = await run_scenario(
+    #     f"2. High-freq ({BURST_SIZE}x)",
+    #     measure_high_frequency,
+    #     hf_iters
+    # )
+    # all_results[f"2. High-freq ({BURST_SIZE}x)"] = hf_results
     
-    await asyncio.sleep(0.1)
+    # await asyncio.sleep(0.1)
     
     # Scenario 3: Game loop (fewer iterations)
     print("\n🔹 Running Scenario 3...")
